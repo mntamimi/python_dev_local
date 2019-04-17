@@ -17,7 +17,8 @@ def get_connection():
         obj.conn.close()
         db.create_engine()
     #obj.conn = dbapi.connect(serverAddress, serverPort, userName, passWord)
-    uri = json.loads(os.getenv('VCAP_SERVICES'))['hana'][0]['credentials']['uri']
+    #uri = json.loads(os.getenv('VCAP_SERVICES'))['hana'][0]['credentials']['uri']
+    uri = json.loads(os.getenv('VCAP_SERVICES'))['hanatrial'][0]['credentials']['host']
     logging.info('Using postgres credentials from VCAP_SERVICES: ' + uri)
 
     #url = 'hana://' + userName + ':' + passWord + '@' + serverAddress + ':' + str(serverPort)
