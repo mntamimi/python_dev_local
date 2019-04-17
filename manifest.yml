@@ -1,0 +1,28 @@
+applications:
+- name: Python_Dev
+  # host: CF_Demo   -> optional, to make URI unique
+  # no-hostname: true is the default
+  memory: 256M
+  disk_quota: 512M
+  instances: 2
+  # domain: xyz    # optional
+  # path: . when not deployed from local repo with CF push
+  buildpack: python_buildpack
+  command: python app.py
+  timeout: 60
+  env:
+#     set to 0 oder delete for production deployment
+      DEBUG: 1
+# services to be created upfront with service instance creation in CloudFoundry
+  services:
+  - redis_dev
+  - hana_dev
+#  - postgres_dev
+# find logs in https://logs.cf.sap.hana.ondemand.com
+  - logging_dev
+#  routes:
+#  - route: ...
+
+# see explanations in
+#   https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html#minimal-manifest
+#   https://docs.pivotal.io/pivotalcf/1-7/devguide/deploy-apps/manifest.html

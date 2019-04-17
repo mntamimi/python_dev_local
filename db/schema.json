@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/product.schema.json",
+  "title": "ProductsProp",
+  "description": "SAP Products",
+  "type": "object",
+  "properties": {
+    "productId": {
+      "description": "Primary Key of products table",
+      "type": "integer"
+    },
+    "productName": {
+      "description": "Name of the product",
+      "type": "string"
+    },
+    "price": {
+      "description": "The price of the product",
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "image": {
+      "description": "Product Image",
+      "type": "blob"
+    },
+    "description": {
+      "description": "Product detail",
+      "type": "string"
+    },
+    "required": [
+      "productId",
+      "productName"
+    ]
+  }
+}
