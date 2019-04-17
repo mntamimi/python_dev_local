@@ -1,16 +1,11 @@
 from flask import Flask, redirect, url_for, request, render_template
-from controllers import util, product as pp, objects as obj
+import controllers.product as pp
+import controllers.objects as obj
 import json
 import os
 
-"""
-test
-sys.argv[1] Database address
-sys.argv[2] Port number of the database
-sys.argv[3] service host 
-sys.argv[4] service host port 
-"""
-__templates = "templates"
+
+#__templates = "templates"
 #serverAddress = str(sys.argv[1]) #"localhost"
 #serverPort = int(sys.argv[2]) #30015
 pp.products.clear()

@@ -1,4 +1,5 @@
-from controllers import product as pp, objects as obj
+import controllers.product as pp
+import controllers.objects as obj
 import sqlalchemy as db
 import json
 import os
