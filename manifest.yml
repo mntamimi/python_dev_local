@@ -12,11 +12,11 @@ applications:
   timeout: 60
   env:
 #     set to 0 oder delete for production deployment
-      DEBUG: 1
+      DEBUG: 0
 # services to be created upfront with service instance creation in CloudFoundry
   services:
   - redis_dev
-  - hana_dev
+  - postgres_dev
 #  - postgres_dev
 # find logs in https://logs.cf.sap.hana.ondemand.com
   - logging_dev

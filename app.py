@@ -38,16 +38,17 @@ def login():
         username = request.form.get("username", "")
         password = request.form.get("password", "")
         try:
-            _util.get_connection()
+            _util.get_connectionPostgres()
             _objects.connected = True
             jsonresponce["Message"] = ""
-            jsonresponce["ProductPage"] = render_template("products.html")
+            jsonresponce["ProductPage"] = ""
         except Exception as msg:
             if _objects.conn is not None: #and _objects.conn.isconnected():
                 _objects.conn.close()
             _objects.conn = None
             _objects.connected = False
             jsonresponce["Message"] = msg.strerror
+            logging.info(msg.strerror)
         finally:
             return json.dumps(jsonresponce, default=lambda o: o.__dict__, sort_keys=True, indent=4)
     return render_template("login.html")
