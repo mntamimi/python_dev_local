@@ -7,6 +7,8 @@ import os
 import logging
 from flask_debugtoolbar import DebugToolbarExtension
 import uuid
+import traceback
+
 
 
 #__templates = "templates"
@@ -30,6 +32,7 @@ toolbar = DebugToolbarExtension(app)
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 @app.route("/", methods=["GET", "POST"])
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -43,6 +46,7 @@ def login():
             jsonresponce["Message"] = ""
             jsonresponce["ProductPage"] = ""
         except Exception as msg:
+            logging.info(traceback.format_exc())
             if _objects.conn is not None: #and _objects.conn.isconnected():
                 _objects.conn.close()
             _objects.conn = None
@@ -62,7 +66,7 @@ def products_page():
         _product.products.clear()
         product_id_filter = request.form.get("ProductId", "")
         product_name_filter = request.form.get("ProductName", "")
-        product_description_filter = request.form.get("ProductIdDesc", "")
+        product_description_filter = request.form.get("ProductDesc", "")
         _util.read_product(product_id=product_id_filter, product_name=product_name_filter,
                            product_description=product_description_filter)
         main_result = {"products": _product.products}

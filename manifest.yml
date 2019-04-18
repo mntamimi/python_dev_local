@@ -15,9 +15,7 @@ applications:
       DEBUG: 0
 # services to be created upfront with service instance creation in CloudFoundry
   services:
-  - redis_dev
   - postgres_dev
-#  - postgres_dev
 # find logs in https://logs.cf.sap.hana.ondemand.com
   - logging_dev
 #  routes:
